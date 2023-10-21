@@ -13,9 +13,6 @@
     <link rel="apple-touch-icon-precomposed" href="/D2SF/source/favicon.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/D2SF/source/favicon.png">
     <link rel="apple-touch-icon" href="/D2SF/source/favicon.png">
-    <script async="" src="https://ssl.pstatic.net/tveta/libs/ndpsdk/prod/ndp-loader.js"></script>
-    <script async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
-    <script src="https://ssl.pstatic.net/tveta/libs/assets/js/pc/main/min/pc.veta.core.min.js" defer="defer"></script>
     <link rel="stylesheet" href="https://ssl.pstatic.net/sstatic/search/pc/css/sp_autocomplete_231019.css">
     <link href="https://pm.pstatic.net/resources/css/main.f467c13b.css" rel="stylesheet">
     <link href="/D2SF/main.css" rel="stylesheet">
@@ -23,11 +20,14 @@
         const $ = document.querySelector.bind(document);
         $("#shortcutArea > ul > li:last-child").onclick = e => {
             $('#shortcutArea').classList.toggle('is_expanded');
-            console.log(e.target)
             e.target.classList.toggle('type_close');
-            e.target.classList.toggle('type_more');
         }
         $('#query').onclick = e => {
+            if ($('#shortcutArea').classList.contains('is_expanded')) {
+                $('#shortcutArea').classList.toggle('is_expanded');
+                $("#shortcutArea > ul > li:last-child .type_more").classList.toggle('type_close');
+
+            }
             $('#autoFrame').classList.toggle('blind');
             $('#autoFrame .atcmp_fixer').classList.toggle('blind');
         }
@@ -90,33 +90,54 @@
                                 </fieldset>
                             </form>
                             <!-- 최근검색어 -->
-                            <div class="layer_atcmp" id="autoFrame" style="display:none">
+                            <div class="layer_atcmp blind" id="autoFrame">
                                 <div class="ly_atcmp" data-atcmp-element="">
                                     <div class="api_atcmp_wrap">
-                                        <div class="atcmp_fixer _recent_layer" style="display:none">
+                                        <div class="atcmp_fixer _recent_layer blind">
                                             <div class="atcmp_header _recent_header"> <strong class="tit">최근검색어</strong>
-                                                <div class="option"> <a role="button" href="#" class="item _delAll"
-                                                        aria-pressed="false">전체삭제</a> </div>
+                                                <div class="option">
+                                                    <a role="button" href="#" class="item _delAll"
+                                                        aria-pressed="false">전체삭제</a>
+                                                </div>
                                             </div>
                                             <div class="atcmp_container">
-                                                <ul class="kwd_lst _recent"></ul>
-                                                <div class="kwd_info kwd_off _offMsg" style="display:none">검색어 저장 기능이 꺼져
-                                                    있습니다.<br><span class="kwd_dsc">설정이 초기화 된다면 <a class="kwd_help"
-                                                            data-clk="sly.help" target="_blank">도움말</a>을 확인해주세요.</span>
-                                                </div>
-                                                <div class="kwd_info kwd_none _recentNone" style="display:none">최근 검색어
-                                                    내역이 없습니다.<br><span class="kwd_dsc">설정이 초기화 된다면 <a
-                                                            href="https://help.naver.com/alias/search/word/word_35.naver"
-                                                            class="kwd_help" data-clk="sly.help"
-                                                            target="_blank">도움말</a>을 확인해주세요.</span></div>
+                                                <ul class="kwd_lst _recent">
+                                                    <li class="item _item over" data-rank="1" data-keyword="위식도 역류질환">
+                                                        <a href="#" class="kwd">
+                                                            <span class="fix">
+                                                                <span class="common_ico_kwd"><i
+                                                                        class="imsc ico_search"></i></span>
+                                                                위식도 역류질환
+                                                            </span>
+                                                        </a>
+                                                        <span class="etc">
+                                                            <em class="date">05.13.</em>
+                                                            <a href="#" role="button" class="bt_item _del"
+                                                                aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                                                        </span>
+                                                    </li>
+                                                    <li class="item _item" data-rank="2" data-keyword="속이 쓰릴 때">
+                                                        <a href="#" class="kwd">
+                                                            <span class="fix"><span class="common_ico_kwd"><i
+                                                                        class="imsc ico_search"></i></span>
+                                                                속이 쓰릴 때</span>
+                                                        </a>
+                                                        <span class="etc">
+                                                            <em class="date">05.13.</em>
+                                                            <a href="#" role="button" class="bt_item _del"
+                                                                aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                                                        </span>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="atcmp_footer"> <span class="side_opt_area"> <span
-                                                        class="opt_item"> <a href="#" class="close _keywordOnOff">자동저장
-                                                            끄기</a> </span> <span class="opt_item"><a
-                                                            href="https://help.naver.com/alias/search/word/word_35.naver"
-                                                            data-clk="sly.help" target="_blank">도움말</a></span> </span>
-                                                <span class="rside_opt_area"> <span class="opt_item"><a href="#"
-                                                            class="close _close">닫기</a></span> </span>
+                                            <div class="atcmp_footer">
+                                                <span class="side_opt_area"> <span class="opt_item">
+                                                        <a href="#" class="close _keywordOnOff">자동저장
+                                                            끄기</a> </span> <span class="opt_item">
+                                                        <a data-clk="sly.help" target="_blank">도움말</a></span> </span>
+                                                <span class="rside_opt_area"> <span class="opt_item">
+                                                        <a href="#" class="close _close">닫기</a></span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="atcmp_fixer _atcmp_layer" style="display:none">
@@ -328,15 +349,17 @@
                                     <div class="AutoRolling-module__rolling-y___T3kmw"
                                         style="animation-duration: 0.5s;">
                                         <div class="ContentHeaderSubView-module__news_desc___ztwqZ">
-                                            <div class="ContentHeaderSubView-module__news_title___wuetX"><a href="/">중국
-                                                    칭다오 맥주공장서 원료에 오줌 누는 영상 공개돼 '발칵'</a></div>
+                                            <div class="ContentHeaderSubView-module__news_title___wuetX">
+                                                <a>중국 칭다오 맥주공장서 원료에 오줌 누는 영상 공개돼 '발칵'</a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="AutoRolling-module__rolling-y___T3kmw"
                                         style="animation-duration: 0.5s;">
                                         <div class="ContentHeaderSubView-module__news_desc___ztwqZ">
-                                            <div class="ContentHeaderSubView-module__news_title___wuetX"><a
-                                                    href="/">[OK!제보] 두 눈 다 실명했는데…수술 성공했다 홍보한 동물병원</a></div>
+                                            <div class="ContentHeaderSubView-module__news_title___wuetX">
+                                                <a>[OK!제보] 두 눈 다 실명했는데…수술 성공했다 홍보한 동물병원</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
