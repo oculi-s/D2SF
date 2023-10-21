@@ -18,18 +18,60 @@
     <link href="/D2SF/main.css" rel="stylesheet">
     <script type="module">
         const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
         $("#shortcutArea > ul > li:last-child").onclick = e => {
             $('#shortcutArea').classList.toggle('is_expanded');
             e.target.classList.toggle('type_close');
         }
-        $('#query').onclick = e => {
+        $('#autoFrame ._close').onclick = $('#query').onclick = e => {
             if ($('#shortcutArea').classList.contains('is_expanded')) {
                 $('#shortcutArea').classList.toggle('is_expanded');
                 $("#shortcutArea > ul > li:last-child .type_more").classList.toggle('type_close');
-
             }
             $('#autoFrame').classList.toggle('blind');
-            $('#autoFrame .atcmp_fixer').classList.toggle('blind');
+            $('#search_area').classList.toggle('type_write');
+        }
+        const hideFrame = () => {
+            if (!$('#autoFrame').classList.contains('blind')) {
+                $('#autoFrame').classList.add('blind');
+                $('#search_area').classList.remove('type_write');
+            }
+        }
+        document.body.onclick = e => {
+            if (e.target.id == 'query' || e.target.closest('#autoFrame')) return;
+            hideFrame();
+        };
+        let kwd = $('.kwd_lst').children.length;
+        $('#query').onkeydown = e => {
+            if (e.key == 'ArrowDown') {
+                let i = 1;
+                if ($('#autoFrame').classList.contains('blind')) {
+                    $('#autoFrame').classList.remove('blind');
+                    $('#search_area').classList.add('type_write');
+                } else if ($('.kwd_lst .over')) {
+                    i = parseInt($('.kwd_lst .over').getAttribute('data-rank'));
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.remove('over');
+                    i = (i + 1 <= kwd) ? i + 1 : 1;
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.add('over');
+                } else {
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.add('over');
+                }
+                $('#query').value = $('.kwd_lst .over').getAttribute('data-keyword');
+            } else if (e.key == 'ArrowUp') {
+                let i = kwd;
+                if ($('#autoFrame').classList.contains('blind')) {
+                    $('#autoFrame').classList.remove('blind');
+                    $('#search_area').classList.add('type_write');
+                } else if ($('.kwd_lst .over')) {
+                    i = parseInt($('.kwd_lst .over').getAttribute('data-rank'));
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.remove('over');
+                    i = i - 1 ? i - 1 : kwd;
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.add('over');
+                } else {
+                    $(`.kwd_lst .item[data-rank="${i}"]`).classList.add('over');
+                }
+                $('#query').value = $('.kwd_lst .over').getAttribute('data-keyword');
+            }
         }
     </script>
 </head>
@@ -66,24 +108,27 @@
                                     <span class="blind">NAVER</span>
                                 </a>
                             </h1>
-                            <form id="sform" name="search" role="search" action="/D2SF/search/" method="get">
+                            <form id="sform" name="search" role="search" action="/D2SF/search" method="get">
                                 <fieldset>
-                                    <legend class="blind">검색</legend> <input type="hidden" name="where"
-                                        value="nexearch"> <input type="hidden" id="sm" name="sm" value="top_hty"> <input
-                                        type="hidden" id="fbm" name="fbm" value="0"> <input type="hidden" id="acr"
-                                        name="acr" value="" disabled="disabled"> <input type="hidden" id="acq"
-                                        name="acq" value="" disabled="disabled"> <input type="hidden" id="qdt"
-                                        name="qdt" value="" disabled="disabled"> <input type="hidden" id="ie" name="ie"
-                                        value="utf8"> <input type="hidden" id="acir" name="acir" value=""
-                                        disabled="disabled"> <input type="hidden" id="os" name="os" value=""
-                                        disabled="disabled"> <input type="hidden" id="bid" name="bid" value=""
-                                        disabled="disabled"> <input type="hidden" id="pkid" name="pkid" value=""
-                                        disabled="disabled"> <input type="hidden" id="eid" name="eid" value=""
-                                        disabled="disabled"> <input type="hidden" id="mra" name="mra" value=""
-                                        disabled="disabled">
-                                    <div class="search_input_box"> <input id="query" name="query" type="search"
-                                            title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." maxlength="255"
-                                            autocomplete="off" class="search_input" data-atcmp-element=""> </div>
+                                    <legend class="blind">검색</legend>
+                                    <!-- <input type="hidden" name="where" value="nexearch">
+                                    <input type="hidden" id="sm" name="sm" value="top_hty">
+                                    <input type="hidden" id="fbm" name="fbm" value="0">
+                                    <input type="hidden" id="acr" name="acr" value="" disabled="disabled">
+                                    <input type="hidden" id="acq" name="acq" value="" disabled="disabled">
+                                    <input type="hidden" id="qdt" name="qdt" value="" disabled="disabled">
+                                    <input type="hidden" id="ie" name="ie" value="utf8">
+                                    <input type="hidden" id="acir" name="acir" value="" disabled="disabled">
+                                    <input type="hidden" id="os" name="os" value="" disabled="disabled">
+                                    <input type="hidden" id="bid" name="bid" value="" disabled="disabled">
+                                    <input type="hidden" id="pkid" name="pkid" value="" disabled="disabled">
+                                    <input type="hidden" id="eid" name="eid" value="" disabled="disabled">
+                                    <input type="hidden" id="mra" name="mra" value="" disabled="disabled"> -->
+                                    <div class="search_input_box">
+                                        <input id="query" name="query" type="search" title="검색어를 입력해 주세요."
+                                            placeholder="검색어를 입력해 주세요." maxlength="255" autocomplete="off"
+                                            class="search_input" data-atcmp-element="">
+                                    </div>
                                     <button type="submit" class="btn_search"
                                         onclick="window.nclk_v2(this,&quot;sch.action&quot;)"> <span id="search-btn"
                                             class="ico_btn_search"></span> <span class="blind">검색</span> </button>
@@ -93,17 +138,16 @@
                             <div class="layer_atcmp blind" id="autoFrame">
                                 <div class="ly_atcmp" data-atcmp-element="">
                                     <div class="api_atcmp_wrap">
-                                        <div class="atcmp_fixer _recent_layer blind">
+                                        <div class="atcmp_fixer _recent_layer">
                                             <div class="atcmp_header _recent_header"> <strong class="tit">최근검색어</strong>
                                                 <div class="option">
-                                                    <a role="button" href="#" class="item _delAll"
-                                                        aria-pressed="false">전체삭제</a>
+                                                    <a role="button" class="item _delAll" aria-pressed="false">전체삭제</a>
                                                 </div>
                                             </div>
                                             <div class="atcmp_container">
                                                 <ul class="kwd_lst _recent">
-                                                    <li class="item _item over" data-rank="1" data-keyword="위식도 역류질환">
-                                                        <a href="#" class="kwd">
+                                                    <li class="item _item" data-rank="1" data-keyword="위식도 역류질환">
+                                                        <a class="kwd">
                                                             <span class="fix">
                                                                 <span class="common_ico_kwd"><i
                                                                         class="imsc ico_search"></i></span>
@@ -111,20 +155,32 @@
                                                             </span>
                                                         </a>
                                                         <span class="etc">
-                                                            <em class="date">05.13.</em>
-                                                            <a href="#" role="button" class="bt_item _del"
+                                                            <em class="date">10.21.</em>
+                                                            <a role="button" class="bt_item _del"
                                                                 aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
                                                         </span>
                                                     </li>
                                                     <li class="item _item" data-rank="2" data-keyword="속이 쓰릴 때">
-                                                        <a href="#" class="kwd">
+                                                        <a class="kwd">
                                                             <span class="fix"><span class="common_ico_kwd"><i
                                                                         class="imsc ico_search"></i></span>
                                                                 속이 쓰릴 때</span>
                                                         </a>
                                                         <span class="etc">
-                                                            <em class="date">05.13.</em>
-                                                            <a href="#" role="button" class="bt_item _del"
+                                                            <em class="date">10.20.</em>
+                                                            <a role="button" class="bt_item _del"
+                                                                aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
+                                                        </span>
+                                                    </li>
+                                                    <li class="item _item" data-rank="3" data-keyword="그레이브스 병">
+                                                        <a class="kwd">
+                                                            <span class="fix"><span class="common_ico_kwd"><i
+                                                                        class="imsc ico_search"></i></span>
+                                                                그레이브스 병</span>
+                                                        </a>
+                                                        <span class="etc">
+                                                            <em class="date">10.20.</em>
+                                                            <a role="button" class="bt_item _del"
                                                                 aria-pressed="false"><i class="imsc ico_del">삭제</i></a>
                                                         </span>
                                                     </li>
@@ -132,11 +188,11 @@
                                             </div>
                                             <div class="atcmp_footer">
                                                 <span class="side_opt_area"> <span class="opt_item">
-                                                        <a href="#" class="close _keywordOnOff">자동저장
+                                                        <a class="close _keywordOnOff">자동저장
                                                             끄기</a> </span> <span class="opt_item">
-                                                        <a data-clk="sly.help" target="_blank">도움말</a></span> </span>
+                                                        <a data-clk="sly.help">도움말</a></span> </span>
                                                 <span class="rside_opt_area"> <span class="opt_item">
-                                                        <a href="#" class="close _close">닫기</a></span>
+                                                        <a class="close _close" style="cursor: pointer;">닫기</a></span>
                                                 </span>
                                             </div>
                                         </div>
