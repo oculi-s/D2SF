@@ -32,7 +32,7 @@ a {
 
 .etc .bt_item {
     height: 38.7px;
-    display: inline-flex;
+    display: inline-flex !important;
     justify-content: center;
     align-items: center;
 }
