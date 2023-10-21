@@ -9,16 +9,16 @@
     <meta name="apple-mobile-web-app-title" content="NAVER">
     <meta name="robots" content="index,nofollow">
     <meta name="description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?1">
-    <link rel="apple-touch-icon-precomposed" href="https://s.pstatic.net/static/www/nFavicon96.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://s.pstatic.net/static/www/u/2014/0328/mma_204243574.png">
-    <link rel="apple-touch-icon" href="https://s.pstatic.net/static/www/u/2014/0328/mma_20432863.png">
-    <link rel="stylesheet" href="https://ssl.pstatic.net/sstatic/search/pc/css/sp_autocomplete_231019.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/D2SF/source/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/D2SF/source/favicon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/D2SF/source/favicon.png">
+    <link rel="apple-touch-icon" href="/D2SF/source/favicon.png">
     <script async="" src="https://ssl.pstatic.net/tveta/libs/ndpsdk/prod/ndp-loader.js"></script>
     <script async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script src="https://ssl.pstatic.net/tveta/libs/assets/js/pc/main/min/pc.veta.core.min.js" defer="defer"></script>
+    <link rel="stylesheet" href="https://ssl.pstatic.net/sstatic/search/pc/css/sp_autocomplete_231019.css">
     <link href="https://pm.pstatic.net/resources/css/main.f467c13b.css" rel="stylesheet">
-    <link href="./main.css" rel="stylesheet">
+    <link href="/D2SF/main.css" rel="stylesheet">
     <script type="module">
         const $ = document.querySelector.bind(document);
         $("#shortcutArea > ul > li:last-child").onclick = e => {
@@ -27,7 +27,10 @@
             e.target.classList.toggle('type_close');
             e.target.classList.toggle('type_more');
         }
-
+        $('#query').onclick = e => {
+            $('#autoFrame').classList.toggle('blind');
+            $('#autoFrame .atcmp_fixer').classList.toggle('blind');
+        }
     </script>
 </head>
 
@@ -49,11 +52,11 @@
                     <div class="search_group">
                         <div id="search" class="search_group_inner">
                             <h1 id="special-input-logo" class="search_logo">
-                                <a href="/" class="link_naver type_motion_hat is_fadeout">
+                                <a href="/D2SF/" class="link_naver type_motion_hat is_fadeout">
                                     <img src="https://s.pstatic.net/static/www/mobile/edit/20230516_0/upload_1684217675277OZzsu.gif"
                                         width="58" height="58" alt="NAVER">
                                 </a>
-                                <a href="/" class="link_naver type_motion_n is_fadein">
+                                <a href="/D2SF/" class="link_naver type_motion_n is_fadein">
                                     <span class="ico_n_logo_svg">
                                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -63,8 +66,7 @@
                                     <span class="blind">NAVER</span>
                                 </a>
                             </h1>
-                            <form id="sform" name="search" role="search" action="https://search.naver.com/search.naver"
-                                method="get">
+                            <form id="sform" name="search" role="search" action="/D2SF/search/" method="get">
                                 <fieldset>
                                     <legend class="blind">검색</legend> <input type="hidden" name="where"
                                         value="nexearch"> <input type="hidden" id="sm" name="sm" value="top_hty"> <input
