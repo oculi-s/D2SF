@@ -44,6 +44,12 @@
     }
 }
 
+.jumping-dots {
+    display: flex;
+    width: 20px;
+    justify-content: space-around;
+}
+
 .jumping-dots span {
     position: relative;
     animation: jump 1s infinite;
