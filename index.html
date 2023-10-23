@@ -23,7 +23,8 @@
     <link rel="stylesheet"
         href="https://search.like.naver.com/static20230725134948/css/ssl/list/desktop/likeit_search.css"
         charset="utf-8">
-    <link rel="stylesheet" href="/D2SF/main.css">
+    <link rel="stylesheet" href="./main.css">
+    <script type="module" src="./main.js"></script>
 </head>
 
 <body class="wrap-new api_animation">
@@ -58,8 +59,7 @@
                                             <div class="guide_text">입력도구</div>
                                         </a>
                                         <div id="_nx_kbd" style="display:none;"></div>
-                                    </div> <!--[AU]초기화 코드는 마크업 코드 바로 뒤에 위치-->
-                                    <script> (function () { var startApplication = function () { var $ = jQuery; var jsUrl = "https://ssl.pstatic.net/sstatic/fe/sfe/ime/app-1.0.4.js"; var cssUrl = "https://ssl.pstatic.net/sstatic/search/pc/css/api_keyboard_230706.css"; var ime; $("#ke_kbd_btn").on("click", function () { require([jsUrl], function (IMEKeyboard) { if (ime) { ime.toggle(); return; } ime = new IMEKeyboard({ "cssUrl": cssUrl, "selector": { "TOGGLE_BTN": "#ke_kbd_btn", "CONTENTS_AREA": "#_nx_kbd", "INPUT": "#nx_query" }, "onSearchBtnClick": function () { $("#nx_search_form").submit(); } }).toggle(); }, function (e) { alert("네트워크 상태가 안 좋아 한영 입력기를 불러오지 못했습니다.\n잠시 후 다시 시도해 주세요."); }); }); }; naver.common.load_js(null, startApplication, true, 150); })(); </script>
+                                    </div>
                                     <div class="autocomplete"> <a role="button" href="#" class="bt_atcp _btn_arw"
                                             id="nautocomplete" aria-pressed="false" data-atcmp-element=""><i
                                                 class="spnew ico_arrow">자동완성 레이어</i>
@@ -3410,8 +3410,9 @@ _svp_trigger" data-is-visible-close-btn="false" data-api="https://s.search.naver
                         <div class="api_subject_bx _related_box">
                             <div class="mod_title_area">
                                 <div class="title_wrap">
-                                    <img src="./source/health.svg" width="20" height="20">
+                                    <img id="nx_doc_logo" src="./source/health.svg" width="20" height="20">
                                     <h2 class="title">네이버 닥터</h2>
+                                    <div id="beta"></div>
                                 </div>
                                 <div class="title_sub"> <a
                                         href="https://help.naver.com/support/alias/search/word/word_2.naver"
@@ -3423,7 +3424,7 @@ _svp_trigger" data-is-visible-close-btn="false" data-api="https://s.search.naver
                                 <ul class="cht_list">
                                     <li class="cht_doc">
                                         <div class="cht_txt">
-                                            안녕하세요. 여러분 옆에 미니의사, 네이버 닥터입니다.
+                                            안녕하세요. 여러분 옆에 작은 의사, 네이버 닥터입니다.
                                         </div>
                                     </li>
                                     <li class="cht_doc">
@@ -3437,11 +3438,17 @@ _svp_trigger" data-is-visible-close-btn="false" data-api="https://s.search.naver
                                         </div>
                                     </li>
                                     <li class="cht_user">
-                                        <div class="cht_txt" data-filled=false>...</div>
+                                        <div class="cht_txt" data-filled=false>
+                                            <span class="jumping-dots">
+                                                <span class="dot-1">.</span>
+                                                <span class="dot-2">.</span>
+                                                <span class="dot-3">.</span>
+                                            </span>
+                                        </div>
                                     </li>
                                 </ul>
                                 <ul class="sel_list">
-                                    <li data-selected=true>네</li>
+                                    <li data-selected=false>네</li>
                                     <li data-selected=false>아니오</li>
                                 </ul>
                             </div>
