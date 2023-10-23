@@ -1,38 +1,101 @@
 .D2SF_added {
-    position: absolute;
-    top: 30;
-    left: 100px;
     color: #eb4034;
     font-weight: bold;
+    text-align: center;
 }
 
-.type_webtoon::after {
-    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.2b96eea2.png);
-    background-size: 434px 414px;
-    background-position: -224px -209px;
-    background-repeat: no-repeat;
-    width: 44px;
-    height: 44px;
-    transform: scale(0.6);
-    transform-origin: left;
-}
-
-.type_health::after {
-    background-image: url(./source/health.svg);
-    background-size: 36px 36px;
-    background-position: 4px 4px;
-    background-repeat: no-repeat;
-    width: 44px;
-    height: 44px;
-}
-
-a {
-    cursor: pointer;
-}
-
-.etc .bt_item {
-    height: 38.7px;
-    display: inline-flex !important;
-    justify-content: center;
+.lnb_nav .lnb_nav_more .nav_more {
+    display: inline-flex;
     align-items: center;
+}
+
+#nx_doctor {
+    padding: 0 19px 19px;
+    font-size: 14px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+#nx_doctor .cht_list {
+    background: #e6fcf0;
+    padding: 5px;
+    border-radius: 10px;
+    height: 300px;
+}
+
+#nx_doctor .cht_list li {
+    margin: 10px auto;
+}
+
+#nx_doctor .cht_txt {
+    display: inline-block;
+    width: calc(100% - 50px);
+    vertical-align: top;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+
+#nx_doctor .cht_user {
+    text-align: right;
+}
+
+#nx_doctor .cht_user .cht_txt {
+    text-align: right;
+    vertical-align: top;
+    background: #8debb7;
+}
+
+#nx_doctor .cht_txt[data-filled=false] {
+    width: auto;
+}
+
+#nx_doctor .cht_doc::before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 4px;
+    display: inline-block;
+    background-image: url('./source/health.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+#nx_doctor .sel_list li {
+    display: inline-block;
+    min-width: 50px;
+    background: #eeeeee;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#nx_doctor .sel_list {
+    /* text-align: right; */
+    margin: 10px auto;
+    /* background: #e6fcf0; */
+    padding: 5px;
+    border-radius: 10px;
 }
