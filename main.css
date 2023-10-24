@@ -73,19 +73,41 @@
     background: #e6fcf0;
     padding: 5px;
     border-radius: 10px;
-    height: 300px;
+    height: 350px;
+    overflow: auto;
 }
 
-#nx_doctor .cht_list li {
+#nx_doctor *::-webkit-scrollbar {
+    width: 10px;
+}
+
+#nx_doctor *::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+#nx_doctor *::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+
+#nx_doctor .cht_list .cht_doc,
+#nx_doctor .cht_list .cht_user {
     margin: 10px auto;
 }
 
 #nx_doctor .cht_txt {
     display: inline-block;
-    width: calc(100% - 50px);
+    max-width: calc(100% - 55px);
     vertical-align: top;
     background: #ffffff;
     padding: 5px 8px;
+    animation: fadeInUp .5s;
+    overflow: auto;
 }
 
 #nx_doctor .cht_user {
@@ -103,10 +125,6 @@
     background: #8debb7;
 }
 
-#nx_doctor .cht_txt[data-filled=false] {
-    width: auto;
-}
-
 #nx_doctor .cht_doc::before {
     content: "";
     width: 25px;
@@ -120,12 +138,20 @@
     background-origin: content-box;
     background-color: #ffffff;
     border-radius: 50%;
+    margin-right: 5px;
+}
+
+#nx_doctor #input_area {
+    display: flex;
+    min-height: 50px;
 }
 
 #nx_doctor .sel_list {
-    margin: 10px auto;
+    margin-right: auto;
     padding: 5px;
     border-radius: 10px;
+    overflow: auto;
+    max-width: calc(100% - 50px);
 }
 
 #nx_doctor .sel_list li {
@@ -136,13 +162,31 @@
     cursor: pointer;
     text-align: center;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 15px;
     transition: background .3s;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 #nx_doctor .sel_list li[data-selected=true] {
     background: #8debb7;
     transition: background .3s;
+}
+
+#nx_doctor #cht_send {
+    cursor: pointer;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 3px;
+    background: #8debb7;
+    background-image: url('./source/send.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-origin: content-box;
 }
 
 #beta {
@@ -151,14 +195,49 @@
     background-image: url('./source/beta.png');
     background-position: -110px -282px;
     background-repeat: no-repeat;
+    margin-left: 3px;
+    margin-top: -8px;
+}
+
+#plus {
+    width: 12px;
+    height: 12px;
+    background-image: url('./source/beta.png');
+    background-position: -112px -185px;
+    background-repeat: no-repeat;
+    margin-left: 3px;
+    margin-top: -8px;
 }
 
 #nx_doc_logo {
     margin-right: 5px;
 }
 
-#beta {
-    margin-left: 3px;
-    margin-top: -8px;
-    animation: jumps 1s infinite;
+#nx_doctor .result {
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    width: fit-content;
+}
+
+#nx_doctor .result .result_item {
+    display: inline-block;
+    width: 80px;
+    background: #f9fcff;
+    border-radius: 5px;
+    padding: 0 3px;
+    margin: 0 3px;
+    overflow: hidden;
+    line-height: 1.1;
+}
+
+#nx_doctor .result .result_item .result_name {
+    height: 40px;
+    word-break: keep-all;
+}
+
+#nx_doctor .result img {
+    width: auto;
+    height: 70px;
+
 }
