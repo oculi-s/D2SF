@@ -41,7 +41,7 @@ const addUserSelMulti = async (option = [], answer = []) => {
             opt.dataset.selected = false;
             sel.append(opt);
             opt.onclick = () => {
-                opt.dataset.selected = true;
+                opt.dataset.selected = !opt.dataset.selected;
             }
         }
         send.onclick = async c => {
