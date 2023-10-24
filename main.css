@@ -234,10 +234,16 @@
 #nx_doctor .result .result_item .result_name {
     height: 40px;
     word-break: keep-all;
+    color: #0313AA;
+    font-weight: bold;
+}
+
+#nx_doctor .result_doc {
+    color: #0313AA;
+    font-weight: bold;
 }
 
 #nx_doctor .result img {
     width: auto;
     height: 70px;
-
 }
