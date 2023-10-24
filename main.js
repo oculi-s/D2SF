@@ -41,7 +41,11 @@ const addUserSelMulti = async (option = [], answer = []) => {
             opt.dataset.selected = false;
             sel.append(opt);
             opt.onclick = () => {
-                opt.dataset.selected = !opt.dataset.selected;
+                if (opt.dataset.selected == "false") {
+                    opt.dataset.selected = true;
+                } else {
+                    opt.dataset.selected = false;
+                }
             }
         }
         send.onclick = async c => {
@@ -114,7 +118,7 @@ const addDocChat = async (inner, delay = 0, dots = false) => {
     })
 }
 
-const searchUrl = (query) => `https://search.naver.com/search.naver?query=${query}`
+const searchUrl = (query) => `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`
 const addChatResult = async (info = [], delay = 0) => {
     await sleep(delay);
     const res = _$('div');
@@ -148,8 +152,34 @@ const addChatResult = async (info = [], delay = 0) => {
     list.scrollTo(0, list.scrollHeight);
 }
 
-const addSearchRes = async (info = [], delay = 0) => {
 
+const addSearchRes = async (info = [], delay = 0) => {
+    $('#nx_doc_map').style.display = 'block';
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
+    function success(pos) {
+        var crd = pos.coords;
+        var mapOptions = {
+            center: new naver.maps.LatLng(crd.latitude, crd.longitude),
+            zoom: 16,
+            scaleControl: false,
+            logoControl: false,
+            mapDataControl: false,
+            zoomControl: true,
+            minZoom: 6
+        }
+        var map = new naver.maps.Map('map', mapOptions);
+    };
+
+    function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
 (async () => {
@@ -204,11 +234,3 @@ const addSearchRes = async (info = [], delay = 0) => {
     await addDocChat("검색 결과에 이 질환들을 치료할 수 있는 병원을 추가했어요. 지금 네이버 예약을 통해 예약하고 전문가의 상담을 받아보세요.", 3000, true);
     await addDocChat("* 네이버 닥터의 진단 결과는 의학 전문가의 소견이 아닙니다. 자신의 건강 상태에 대해 참고하는 용도로 사용하시기 바랍니다.", 500);
 })();
-
-$$('#nx_doctor .sel_list li').forEach(e => {
-    e.onclick = () => {
-        $$('#nx_doctor .sel_list li').forEach(e => { e.dataset.selected = false });
-        e.dataset.selected = true;
-
-    }
-})
