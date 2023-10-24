@@ -23,8 +23,305 @@
         href="https://search.like.naver.com/static20230725134948/css/ssl/list/desktop/likeit_search.css"
         charset="utf-8">
     <link rel="shortcut icon" href="./source/favicon.png">
-    <link rel="stylesheet" href="./main.css">
+    <!-- <link rel="stylesheet" href="./main.css"> -->
     <!-- <script type="module" src="./main.js"></script> -->
+    <style>
+        .D2SF_added {
+            color: #eb4034;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .lnb_nav .lnb_nav_more .nav_more {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        #nx_doctor {
+            padding: 0 19px 19px;
+            font-size: 14px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes jump {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-.3em);
+            }
+        }
+
+        .jumping-dots {
+            display: flex;
+            width: 20px;
+            justify-content: space-around;
+        }
+
+        .jumping-dots span {
+            position: relative;
+            animation: jump 1s infinite;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .jumping-dots .dot-1 {
+            animation-delay: 200ms;
+        }
+
+        .jumping-dots .dot-2 {
+            animation-delay: 300ms;
+        }
+
+        .jumping-dots .dot-3 {
+            animation-delay: 400ms;
+        }
+
+        #nx_doctor .cht_list {
+            background: #e6fcf0;
+            padding: 5px;
+            border-radius: 10px;
+            height: 350px;
+            overflow: auto;
+        }
+
+        #nx_doctor *::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        #nx_doctor *::-webkit-scrollbar-thumb {
+            background-color: #aaa;
+            border-radius: 10px;
+            background-clip: padding-box;
+            border: 2px solid transparent;
+        }
+
+        #nx_doctor *::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px white;
+        }
+
+
+        #nx_doctor .cht_list .cht_doc,
+        #nx_doctor .cht_list .cht_user {
+            margin: 10px auto;
+        }
+
+        #nx_doctor .cht_txt {
+            display: inline-block;
+            max-width: calc(100% - 55px);
+            vertical-align: top;
+            background: #ffffff;
+            padding: 5px 8px;
+            animation: fadeInUp .5s;
+            overflow: auto;
+        }
+
+        #nx_doctor .cht_user {
+            text-align: right;
+        }
+
+        #nx_doctor .cht_doc .cht_txt {
+            border-radius: 10px 10px 10px 0;
+        }
+
+        #nx_doctor .cht_user .cht_txt {
+            border-radius: 10px 10px 0 10px;
+            text-align: right;
+            vertical-align: top;
+            background: #8debb7;
+        }
+
+        #nx_doctor .cht_doc::before {
+            content: "";
+            width: 25px;
+            height: 25px;
+            box-sizing: border-box;
+            padding: 4px;
+            display: inline-block;
+            background-image: url('./source/health.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        #nx_doctor #input_area {
+            display: flex;
+            min-height: 50px;
+        }
+
+        #nx_doctor .sel_list {
+            margin-right: auto;
+            padding: 5px;
+            border-radius: 10px;
+            overflow: auto;
+            max-width: calc(100% - 50px);
+        }
+
+        #nx_doctor .sel_list li {
+            display: inline-block;
+            min-width: 50px;
+            background: #eeeeee;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            padding: 5px;
+            border-radius: 15px;
+            transition: background .3s;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        #nx_doctor .sel_list li[data-selected=true] {
+            background: #8debb7;
+            transition: background .3s;
+        }
+
+        #nx_doctor #cht_send {
+            cursor: pointer;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin: 5px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            padding: 3px;
+            background: #8debb7;
+            background-image: url('./source/send.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+        }
+
+        #beta {
+            width: 22px;
+            height: 12px;
+            background-image: url('./source/beta.png');
+            background-position: -110px -282px;
+            background-repeat: no-repeat;
+            margin-left: 3px;
+            margin-top: -8px;
+        }
+
+        #plus {
+            width: 12px;
+            height: 12px;
+            background-image: url('./source/beta.png');
+            background-position: -112px -185px;
+            background-repeat: no-repeat;
+            margin-left: 3px;
+            margin-top: -8px;
+        }
+
+        #nx_doc_logo {
+            margin-right: 5px;
+        }
+
+        #nx_doctor .result {
+            text-align: center;
+            font-size: 14px;
+            display: flex;
+            width: fit-content;
+        }
+
+        #nx_doctor .result .result_item {
+            display: inline-block;
+            width: 80px;
+            background: #f9fcff;
+            border-radius: 5px;
+            padding: 0 3px;
+            margin: 0 3px;
+            overflow: hidden;
+            line-height: 1.1;
+        }
+
+        #nx_doctor .result .result_item .result_name {
+            height: 40px;
+            word-break: keep-all;
+            color: #0313AA;
+            font-weight: bold;
+        }
+
+        #nx_doctor .result_doc {
+            color: #0313AA;
+            font-weight: bold;
+        }
+
+        #nx_doctor .result img {
+            width: auto;
+            height: 70px;
+        }
+
+        #nx_doc_map {
+            box-sizing: border-box;
+            padding-bottom: 27px;
+        }
+
+        #nx_doc_map>div {
+            padding: 19px 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #nx_doc_map #map,
+        #nx_doc_map #book {
+            height: 400px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #nx_doc_map #map {
+            width: 60%;
+        }
+
+        #nx_doc_map #book {
+            width: 38%;
+        }
+
+        #nx_doc_map .title_wrap {
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+            font-weight: 600;
+        }
+
+        #nx_doc_map .title {
+            display: inline-block;
+            position: static;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: inherit;
+        }
+    </style>
     <script type="module">
         const $ = document.querySelector.bind(document);
         const $$ = document.querySelectorAll.bind(document);
