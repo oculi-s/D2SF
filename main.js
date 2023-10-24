@@ -157,9 +157,9 @@ const addSearchRes = async (info = [], delay = 0) => {
     await addDocChat('"<b>속이 쓰릴때</b>"를 검색해 주셔서 네이버 닥터가 도와드리려고 찾아왔어요.', 500);
     await addDocChat('혹시 가슴이 아프신가요?', 500);
     await addUserSel(['네', '아니요'], '아니요');
-    await addDocChat("혹시 배변을 보면 속쓰림이 완화되시나요?", 500);
+    await addDocChat("배변을 보면 속쓰림이 완화되시나요?", 500);
     await addUserSel(['네', '아니요'], '아니요');
-    await addDocChat("혹시 최근에 스트레스를 심하게 받은 일이 있으신가요?", 500);
+    await addDocChat("최근에 스트레스를 심하게 받은 일이 있으신가요?", 500);
     await addUserSel(['네', '아니요'], '아니요');
     await addDocChat("이중에 복용하시는 약이 있나요?", 500);
     await addUserSelMulti(['아스피린', '진통제', '항생제', '제산제', '스테로이드 (하이손, 캘코트)', '없음'], ['없음']);
