@@ -198,42 +198,42 @@ const addSearchRes = async (info = [], delay = 0) => {
 }
 
 (async () => {
-    // await addDocChat('안녕하세요. 여러분 옆에 작은 의사, 네이버 닥터입니다.')
-    // await addDocChat('"<b>속이 쓰릴때</b>"를 검색해 주셔서 네이버 닥터가 도와드리려고 찾아왔어요.', 500);
-    // await addDocChat('혹시 가슴이 아프신가요?', 500);
-    // await addUserSel(['네', '아니요'], '아니요');
-    // await addDocChat("배변을 보면 속쓰림이 완화되시나요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
-    // await addDocChat("최근에 스트레스를 심하게 받은 일이 있으신가요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
-    // await addDocChat("이중에 복용하시는 약이 있나요?", 500);
-    // await addUserSelMulti(['아스피린', '진통제', '항생제', '제산제', '스테로이드 (하이손, 캘코트)', '없음'], ['없음']);
+    await addDocChat('안녕하세요. 여러분 옆에 작은 의사, 네이버 닥터입니다.')
+    await addDocChat('"<b>속이 쓰릴때</b>"를 검색해 주셔서 네이버 닥터가 도와드리려고 찾아왔어요.', 500);
+    await addDocChat('혹시 가슴이 아프신가요?', 500);
+    await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("배변을 보면 속쓰림이 완화되시나요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("최근에 스트레스를 심하게 받은 일이 있으신가요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("이중에 복용하시는 약이 있나요?", 500);
+    await addUserSelMulti(['아스피린', '진통제', '항생제', '제산제', '스테로이드 (하이손, 캘코트)', '없음'], ['없음']);
 
-    // await addDocChat("최근 1개월 이내에 급격한 체중감소가 있었나요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
-    // await addDocChat("최근 1개월 이내에 변이 빨갛거나 검은색인 적이 있었나요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
-    // await addDocChat("최근 음식을 삼키기 어려운 적이 있었나요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("최근 1개월 이내에 급격한 체중감소가 있었나요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("최근 1개월 이내에 변이 빨갛거나 검은색인 적이 있었나요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("최근 음식을 삼키기 어려운 적이 있었나요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
 
-    // await addDocChat("최근 2년 이내 위/대장내시경을 받으셨나요?", 500);
-    // await addUserSel(['네', '아니요'], '네');
-    // await addDocChat("내시경 검사에서 다음과 같은 말을 들어보신 적이 있나요?", 500);
-    // await addUserSelMulti(['암/덩어리가 있다.', '위/대장에 궤양이 많다.', '용종/폴립이 다수 존재한다.', '심각한 병으로 오랜기간 치료를 받아야 한다.', '없음/기억나지 않음'], ['없음/기억나지 않음']);
-    // await addDocChat("기름진 음식을 많이 드시나요?", 500);
-    // await addUserSel(['네', '아니요'], '네');
-    // await addDocChat("얼굴이 노랗고 눈의 흰자가 노란색인가요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("최근 2년 이내 위/대장내시경을 받으셨나요?", 500);
+    await addUserSel(['네', '아니요'], '네');
+    await addDocChat("내시경 검사에서 다음과 같은 말을 들어보신 적이 있나요?", 500);
+    await addUserSelMulti(['암/덩어리가 있다.', '위/대장에 궤양이 많다.', '용종/폴립이 다수 존재한다.', '심각한 병으로 오랜기간 치료를 받아야 한다.', '없음/기억나지 않음'], ['없음/기억나지 않음']);
+    await addDocChat("기름진 음식을 많이 드시나요?", 500);
+    await addUserSel(['네', '아니요'], '네');
+    await addDocChat("얼굴이 노랗고 눈의 흰자가 노란색인가요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
 
-    // await addDocChat("속이 쓰릴 때 설사를 같이 하나요?", 500);
-    // await addUserSel(['네', '아니요'], '아니요');
+    await addDocChat("속이 쓰릴 때 설사를 같이 하나요?", 500);
+    await addUserSel(['네', '아니요'], '아니요');
 
-    // await addDocChat("밤늦게 식사를 하고 바로 눕는 습관이 있나요?", 500);
-    // await addUserSel(['네', '아니요'], '네');
-    // await addDocChat("명치에 타는 듯한 통증이 있나요?", 500);
-    // await addUserSel(['네', '아니요'], '네');
-    // await addDocChat("누우면 더 아픈가요?", 500);
-    // await addUserSel(['네', '아니요'], '네');
+    await addDocChat("밤늦게 식사를 하고 바로 눕는 습관이 있나요?", 500);
+    await addUserSel(['네', '아니요'], '네');
+    await addDocChat("명치에 타는 듯한 통증이 있나요?", 500);
+    await addUserSel(['네', '아니요'], '네');
+    await addDocChat("누우면 더 아픈가요?", 500);
+    await addUserSel(['네', '아니요'], '네');
 
     await addDocChat("네이버 닥터의 진단결과 아래의 질병이 의심됩니다.", 2000, true);
     await addChatResult([
